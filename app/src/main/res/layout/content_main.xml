@@ -29,6 +29,7 @@
             android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="24dp"
+
             />
 
 
@@ -48,6 +49,8 @@
         android:inputType="number"
         android:hint="Intoduzca el codigo del producto"
         android:padding="5dp"
+        android:drawableLeft="@drawable/carru"
+
         />
     <EditText
         android:id="@+id/et_descipcion"
@@ -57,6 +60,7 @@
         android:inputType="text"
         android:hint="Intoduzca la descripcion del producto"
         android:padding="5dp"
+        android:drawableLeft="@drawable/pro"
         />
     <EditText
         android:id="@+id/et_precio"
@@ -66,6 +70,7 @@
         android:inputType="numberDecimal"
         android:hint="Intoduzca el precio del producto"
         android:padding="5dp"
+        android:drawableLeft="@drawable/dinero"
         />
 
     <LinearLayout
