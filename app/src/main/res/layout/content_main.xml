@@ -23,8 +23,137 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="@string/titulo"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            />
 
-        </TextView>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/carrito"
+                android:layout_marginTop="15dp"
+                android:scaleType="center"
+                />
+
+    <EditText
+        android:id="@+id/et_codigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:hint="Intoduzca el codigo del producto"
+        android:padding="5dp"
+        />
+    <EditText
+        android:id="@+id/et_descipcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:hint="Intoduzca la descripcion del producto"
+        android:padding="5dp"
+        />
+    <EditText
+        android:id="@+id/et_precio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="numberDecimal"
+        android:hint="Intoduzca el precio del producto"
+        android:padding="5dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center">
+
+
+    <Button
+        android:id="@+id/btnAlta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btnConsultar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultar por codigo"
+        android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center">
+
+
+        <Button
+            android:id="@+id/btnConsultar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consulta por Descipcion"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center">
+
+
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btnNuevo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevo"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            android:textStyle="bold"/>
+    </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
+
