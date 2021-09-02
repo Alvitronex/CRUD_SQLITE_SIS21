@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity  implements  View.OnClickLis
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Hello I've a new history for you is about this, the program is a technology for the world, Did you know about?" +
+                        "The animal isn't always worst!!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
