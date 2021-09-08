@@ -9,10 +9,11 @@ import androidx.annotation.Nullable;
 
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
-
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NOMBRE = "administracion.db";
 
     public AdminSQLiteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+        super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
 
     }
 

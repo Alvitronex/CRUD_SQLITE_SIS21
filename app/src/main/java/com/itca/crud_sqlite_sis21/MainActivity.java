@@ -1,5 +1,8 @@
 package com.itca.crud_sqlite_sis21;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,13 +25,13 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  implements  View.OnClickListener{
+public class MainActivity extends AppCompatActivity  /*implements  View.OnClickListener*/{
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
     private EditText et_descripcion, et_precio, et_codigo;
-    private Button btnAlta, btnConsultar1, btnConsultar2, btnEliminar, btnActualizar, btnNuevo, btnSalir;
+    /*private Button btnAlta, btnConsultar1, btnConsultar2, btnEliminar, btnActualizar, btnNuevo, btnSalir;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,9 @@ public class MainActivity extends AppCompatActivity  implements  View.OnClickLis
         et_codigo = findViewById(R.id.et_codigo);
         et_descripcion = findViewById(R.id.et_descipcion);
         et_precio = findViewById(R.id.et_precio);
-        btnAlta = findViewById(R.id.btnAlta);
+
+
+        /*btnAlta = findViewById(R.id.btnAlta);
         btnConsultar1 = findViewById(R.id.btnConsultar1);
         btnConsultar2 = findViewById(R.id.btnConsultar2);
         btnEliminar = findViewById(R.id.btnEliminar);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity  implements  View.OnClickLis
         btnEliminar.setOnClickListener(this);
         btnActualizar.setOnClickListener(this);
         btnNuevo.setOnClickListener(this);
-        btnSalir.setOnClickListener(this);
+        btnSalir.setOnClickListener(this);*/
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,96 @@ public class MainActivity extends AppCompatActivity  implements  View.OnClickLis
 
         return super.onOptionsItemSelected(item);
     }
+    public void alta(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String cod = et_codigo.getText().toString();
+        String descri = et_descripcion.getText().toString();
+        String pre = et_precio.getText().toString();
+        ContentValues registro = new ContentValues();
+        registro.put("codigo", cod);
+        registro.put("descripcion",descri);
+        registro.put("precio", pre);
+        bd.insert("articulos", null, registro);
+        bd.close();
+        et_codigo.setText("");
+        et_descripcion.setText("");
+        et_precio.setText("");
+        Toast.makeText(this, "Se cargaron los datos del articulo",
+                Toast.LENGTH_SHORT).show();
+    }
+    public void consultarporcodigo(View view) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String cod = et_codigo.getText().toString();
+        Cursor fila = bd.rawQuery(
+                "SELECT descripcion,precio FROM articulos WHERE codigo=" + cod, null);
+        if (fila.moveToFirst()) {
+            et_descripcion.setText(fila.getString(0));
+            et_precio.setText(fila.getString(0));
+        } else {
+            Toast.makeText(this, "No existe un articulo con dicho codigo", Toast.LENGTH_SHORT).show();
 
+        }
+        bd.close();
+    }
+
+    public void consultarpordescripcion(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String descri = et_descripcion.getText().toString();
+        Cursor fila = bd.rawQuery(
+                "SELECT codigo,precio FROM articulos WHERE descripcion" + descri, null);
+        if (fila.moveToFirst()){
+            et_codigo.setText(fila.getString(0));
+            et_precio.setText(fila.getString(1));
+        }else {
+            Toast.makeText(this, "No existe un articulos con dicha descripcion", Toast.LENGTH_SHORT).show();
+        }
+        bd.close();
+    }
+
+    public void bajaporcodigo(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String cod = et_codigo.getText().toString();
+        int cant = bd.delete(
+                "articulos","codigo=" + cod,null);
+        bd.close();
+        et_codigo.setText("");
+        et_descripcion.setText("");
+        et_precio.setText("");
+        if (cant == 1){
+            Toast.makeText(this,"se borro el articulos con dicho codigo",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "No existe un articulos con dicho codigo", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void modificacion (View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String cod = et_codigo.getText().toString();
+        String descri = et_descripcion.getText().toString();
+        String pre = et_precio.getText().toString();
+        ContentValues registro = new ContentValues();
+        registro.put("codigo",cod);
+        registro.put("descripcion",descri);
+        registro.put("precio",pre);
+        int cant = bd.update("articulos", registro, "codigo="+ cod, null);
+        bd.close();
+        if (cant == 1){
+            Toast.makeText(this, "Se modifico los datos", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "no existe un articulos con el codigo ingresado",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public  void  nuevo(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+    }
+    /*
     @Override
     public void onClick(View view) {
         switch(view.getId())
@@ -123,6 +217,8 @@ public class MainActivity extends AppCompatActivity  implements  View.OnClickLis
 
         }
     }
+    */
+
 /*
     @Override
     public boolean onSupportNavigateUp() {

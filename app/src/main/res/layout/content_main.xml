@@ -34,8 +34,8 @@
 
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="380dp"
+                android:layout_height="250dp"
                 android:src="@drawable/carrito3"
                 android:layout_marginTop="15dp"
                 android:scaleType="center"
@@ -44,34 +44,30 @@
     <EditText
         android:id="@+id/et_codigo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:inputType="number"
         android:hint="Intoduzca el codigo del producto"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/carru"
+        android:drawableLeft="@drawable/codigo"
 
         />
     <EditText
         android:id="@+id/et_descipcion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:inputType="text"
         android:hint="Intoduzca la descripcion del producto"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/pro"
+        android:drawableLeft="@drawable/descripcion"
         />
     <EditText
         android:id="@+id/et_precio"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:inputType="numberDecimal"
         android:hint="Intoduzca el precio del producto"
-        android:padding="5dp"
-        android:drawableLeft="@drawable/dinero"
-        />
+        android:drawableLeft="@drawable/precio" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar"
+        android:onClick="alta"
         android:layout_marginRight="10dp"
         android:textStyle="bold" />
 
@@ -95,6 +92,7 @@
         android:id="@+id/btnConsultar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="consultarporcodigo"
         android:text="Consultar por codigo"
         android:textStyle="bold"/>
 
@@ -114,6 +112,7 @@
             android:id="@+id/btnConsultar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="consultarpordescripcion"
             android:text="Consulta por Descipcion"
             android:layout_marginRight="10dp"
             android:textStyle="bold" />
@@ -124,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Eliminar"
+            android:onClick="bajaporcodigo"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -131,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center_vertical">
 
@@ -142,15 +142,15 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="Actualizar"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:onClick="modificacion"/>
 
         <Button
             android:id="@+id/btnNuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nuevo"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
         <Button
