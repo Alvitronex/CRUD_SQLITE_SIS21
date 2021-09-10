@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Hello I've a new history for you is about this, the program is a technology for the world, Did you know about?" +
+                Snackbar.make(view, "Hello I've a new history for you is about this program is a technology for the world, Did you know about?" +
                         "The animal isn't always worst!!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
 
         return super.onOptionsItemSelected(item);
     }
-    public void alta(View view){
+    public void Guardar(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         String cod = et_codigo.getText().toString();
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
                 "SELECT descripcion,precio FROM articulos WHERE codigo=" + cod, null);
         if (fila.moveToFirst()) {
             et_descripcion.setText(fila.getString(0));
-            et_precio.setText(fila.getString(0));
+            et_precio.setText(fila.getString(1));
         } else {
             Toast.makeText(this, "No existe un articulo con dicho codigo", Toast.LENGTH_SHORT).show();
 
@@ -136,9 +136,9 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
     public void consultarpordescripcion(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
-        String descri = et_descripcion.getText().toString();
+        String descripcion = et_descripcion.getText().toString();
         Cursor fila = bd.rawQuery(
-                "SELECT codigo,precio FROM articulos WHERE descripcion" + descri, null);
+                "SELECT codigo,precio FROM articulos WHERE descripcion= '" + descripcion + "'" , null);
         if (fila.moveToFirst()){
             et_codigo.setText(fila.getString(0));
             et_precio.setText(fila.getString(1));
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
         bd.close();
     }
 
-    public void bajaporcodigo(View view){
+    public void Eliminar(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         String cod = et_codigo.getText().toString();
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
         }
     }
 
-    public void modificacion (View view){
+    public void Actualizar(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         String cod = et_codigo.getText().toString();
@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity  /*implements  View.OnClickL
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
     }
+
     /*
     @Override
     public void onClick(View view) {
